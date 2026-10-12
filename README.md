@@ -49,4 +49,10 @@ uv run python -m unittest
 
 CI validates the production-compatible schema, unique identities and command semantics. Releases contain the reviewed catalog, schema and SHA-256 checksums. Pin the release's Git commit when importing it into forge.
 
-Code and policy text use Apache 2.0. Firefly product names retain their trademark rights.
+First-party code and policy text use Apache 2.0. Community adaptations retain the MIT or Apache 2.0 notices embedded in each entry. Firefly product names retain their trademark rights.
+
+## Community instruction sources
+
+Version 1.1.0 includes adapted thinking, test-driven development, debugging and evidence instructions from [Superpowers](https://github.com/obra/superpowers), frontend design and browser QA from [Anthropic skills](https://github.com/anthropics/skills), and prose editing from [Humanizer](https://github.com/blader/humanizer). Each entry identifies its exact source commit and file, source SHA-256, adaptation SHA-256 and license text. The two selected Anthropic skills have individually verified Apache 2.0 licenses; this does not characterize other skills in that repository.
+
+These are instruction adaptations. Forge does not install upstream plugins, execute their helper scripts, grant native tools or automatically perform their suggested publication steps. Codex and Claude use their official worker tooling; native Agentic uses confined workspace tools. Product-owner decisions and factory permissions take precedence over optional guidance. The role registry freezes selected adaptations into each run separately from executable repository quality gates.

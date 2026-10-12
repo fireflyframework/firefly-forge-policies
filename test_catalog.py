@@ -34,6 +34,18 @@ class CatalogTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate(self.document)
 
+    def test_community_hash_tampering_is_rejected(self):
+        entry = next(item for item in self.document["skills"] if item.get("provenance"))
+        entry["instructions"] = "Unreviewed adaptation"
+        with self.assertRaises(ValueError):
+            validate(self.document)
+
+    def test_community_license_tampering_is_rejected(self):
+        entry = next(item for item in self.document["skills"] if item.get("provenance"))
+        entry["provenance"]["license_text"] = "Missing license"
+        with self.assertRaises(ValueError):
+            validate(self.document)
+
 
 if __name__ == "__main__":
     unittest.main()
