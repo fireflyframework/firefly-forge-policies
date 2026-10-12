@@ -96,6 +96,43 @@
           "maxItems": 10,
           "title": "Commands",
           "type": "array"
+        },
+        "adaptation": {
+          "anyOf": [
+            {
+              "const": "instruction-only",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adaptation"
+        },
+        "adaptation_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adaptation Sha256"
+        },
+        "provenance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SkillProvenance"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -106,6 +143,76 @@
         "instructions"
       ],
       "title": "SkillPolicy",
+      "type": "object"
+    },
+    "SkillProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "revision": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Revision",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "source_url": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "source_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "license": {
+          "enum": [
+            "MIT",
+            "Apache-2.0"
+          ],
+          "title": "License",
+          "type": "string"
+        },
+        "license_path": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "License Path",
+          "type": "string"
+        },
+        "license_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "License Sha256",
+          "type": "string"
+        },
+        "license_text": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "License Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repository",
+        "revision",
+        "path",
+        "source_url",
+        "source_sha256",
+        "license",
+        "license_path",
+        "license_sha256",
+        "license_text"
+      ],
+      "title": "SkillProvenance",
       "type": "object"
     }
   },

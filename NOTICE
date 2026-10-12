@@ -1,2 +1,9 @@
 Copyright 2026 Firefly Software Foundation.
 firefly forge is a Firefly Software Foundation trademark.
+
+Community instruction adaptations include material from:
+- obra/superpowers, MIT, Copyright (c) 2025 Jesse Vincent.
+- blader/humanizer, MIT, Copyright (c) 2025 Siqi Chen.
+- anthropics/skills frontend-design and webapp-testing, Apache License 2.0.
+Exact pinned provenance and full license texts accompany each catalog entry.
+Adaptations are modified by the Firefly Software Foundation for bounded factory execution.
