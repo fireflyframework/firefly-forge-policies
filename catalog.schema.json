@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "PolicyCommand": {
+      "additionalProperties": false,
+      "properties": {
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Argv",
+          "type": "array"
+        },
+        "timeout": {
+          "default": 300,
+          "maximum": 3600,
+          "minimum": 1,
+          "title": "Timeout",
+          "type": "integer"
+        },
+        "backends": {
+          "items": {
+            "enum": [
+              "pyfly",
+              "larafly",
+              "java",
+              "rust",
+              "dotnet"
+            ],
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Backends",
+          "type": "array"
+        }
+      },
+      "required": [
+        "argv",
+        "backends"
+      ],
+      "title": "PolicyCommand",
+      "type": "object"
+    },
+    "SkillPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "category": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Category",
+          "type": "string"
+        },
+        "kind": {
+          "default": "recommendation",
+          "enum": [
+            "recommendation",
+            "quality_gate"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "default": {
+          "type": "boolean",
+          "default": false,
+          "title": "Default"
+        },
+        "instructions": {
+          "maxLength": 16000,
+          "minLength": 1,
+          "title": "Instructions",
+          "type": "string"
+        },
+        "commands": {
+          "items": {
+            "$ref": "#/$defs/PolicyCommand"
+          },
+          "maxItems": 10,
+          "title": "Commands",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "category",
+        "instructions"
+      ],
+      "title": "SkillPolicy",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "skills": {
+      "items": {
+        "$ref": "#/$defs/SkillPolicy"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "title": "Skills",
+      "type": "array"
+    }
+  },
+  "required": [
+    "version",
+    "skills"
+  ],
+  "title": "CatalogDocument",
+  "type": "object"
+}

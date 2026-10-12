@@ -1,0 +1,160 @@
+{
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "implementation",
+      "name": "Framework implementation",
+      "description": "Build maintainable source using the selected Firefly framework.",
+      "default": true,
+      "instructions": "Inspect existing code and repository instructions first. Implement the brief using real framework imports, dependency injection and service boundaries. Keep the change bounded and avoid unrelated refactors.",
+      "category": "sdlc",
+      "kind": "recommendation",
+      "commands": []
+    },
+    {
+      "id": "verification",
+      "name": "Meaningful verification",
+      "description": "Exercise product behavior, errors and executable checks.",
+      "default": true,
+      "instructions": "Add meaningful behavioral tests before fixing behavior. Cover valid input, validation, conflicts and regression cases. Provide executable checks for tests, lint, types and build where configured. Never disable checks, fake passing output or use no-op tests.",
+      "category": "sdlc",
+      "kind": "recommendation",
+      "commands": []
+    },
+    {
+      "id": "security",
+      "name": "Secure application boundaries",
+      "description": "Preserve authentication, validation and credential safety.",
+      "default": true,
+      "instructions": "Preserve authentication, CSRF and authorization boundaries. Validate input and constrain file access. Never read, generate or print private credentials. Use environment examples with placeholders and preserve safe error handling.",
+      "category": "sdlc",
+      "kind": "recommendation",
+      "commands": []
+    },
+    {
+      "id": "accessibility",
+      "name": "Accessible product experience",
+      "description": "Build usable forms, navigation and status feedback.",
+      "default": false,
+      "instructions": "Use semantic controls with labels, visible keyboard focus, accessible errors and status announcements. Check narrow screens, keyboard navigation and loading/error states. Test actual user actions rather than component existence.",
+      "category": "sdlc",
+      "kind": "recommendation",
+      "commands": []
+    },
+    {
+      "id": "documentation",
+      "name": "Product handoff",
+      "description": "Explain installation, use, checks and operational limits.",
+      "default": false,
+      "instructions": "Write a concise product README with reproducible installation, configuration, usage and verification steps. Describe actual behavior and limitations. Keep secrets and absolute local machine paths out of source.",
+      "category": "sdlc",
+      "kind": "recommendation",
+      "commands": []
+    },
+    {
+      "id": "requirements",
+      "name": "Acceptance criteria",
+      "category": "requirements",
+      "description": "Identify users, workflow boundaries and measurable acceptance criteria before implementing. Keep each criterion traceable to a behavioral check.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Identify users, workflow boundaries and measurable acceptance criteria before implementing. Keep each criterion traceable to a behavioral check.",
+      "commands": []
+    },
+    {
+      "id": "architecture",
+      "name": "Framework architecture",
+      "category": "architecture",
+      "description": "Use the selected Firefly framework native DI, web, data and lifecycle modules. Keep responsibilities in services and repositories. Document consequential architecture choices and avoid substitutes for the requested framework.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Use the selected Firefly framework native DI, web, data and lifecycle modules. Keep responsibilities in services and repositories. Document consequential architecture choices and avoid substitutes for the requested framework.",
+      "commands": []
+    },
+    {
+      "id": "dependencies",
+      "name": "Dependency maintenance",
+      "category": "maintenance",
+      "description": "Inspect the locked dependencies and their published compatibility contracts. Make bounded upgrades with regression checks and preserve reproducible installs. Report unsupported versions and unresolved dependency vulnerabilities accurately.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Inspect the locked dependencies and their published compatibility contracts. Make bounded upgrades with regression checks and preserve reproducible installs. Report unsupported versions and unresolved dependency vulnerabilities accurately.",
+      "commands": []
+    },
+    {
+      "id": "observability",
+      "name": "Operational visibility",
+      "category": "operations",
+      "description": "Use structured logs without secrets, actionable error messages and appropriate health checks. Document failures and recovery steps. Keep service readiness distinct from successful provider or product acceptance.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Use structured logs without secrets, actionable error messages and appropriate health checks. Document failures and recovery steps. Keep service readiness distinct from successful provider or product acceptance.",
+      "commands": []
+    },
+    {
+      "id": "release",
+      "name": "Release preparation",
+      "category": "delivery",
+      "description": "Produce installable source, repeatable build commands, passing verification evidence and documented operating requirements. Identify required external permissions. Never publish, merge or deploy beyond the explicitly requested operation.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Produce installable source, repeatable build commands, passing verification evidence and documented operating requirements. Identify required external permissions. Never publish, merge or deploy beyond the explicitly requested operation.",
+      "commands": []
+    },
+    {
+      "id": "human-readable-docs",
+      "name": "Readable documentation",
+      "category": "documentation",
+      "description": "Write direct instructions for the intended operator. State concrete behavior and limitations. Remove inflated claims, staged openers and repeated summaries. Preserve exact commands, identifiers, citations and configuration names.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Write direct instructions for the intended operator. State concrete behavior and limitations. Remove inflated claims, staged openers and repeated summaries. Preserve exact commands, identifiers, citations and configuration names.",
+      "commands": []
+    },
+    {
+      "id": "maintainability",
+      "name": "Code maintainability",
+      "category": "implementation",
+      "description": "Follow existing repository patterns, inspect source before changing it, remove dead code and keep the change focused. Choose meaningful names and document only non-obvious decisions.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Follow existing repository patterns, inspect source before changing it, remove dead code and keep the change focused. Choose meaningful names and document only non-obvious decisions.",
+      "commands": []
+    },
+    {
+      "id": "browser-acceptance",
+      "name": "Browser acceptance",
+      "category": "verification",
+      "description": "Exercise the running application with real user workflows, API integration, both theme modes when supported, narrow layouts and keyboard navigation. Do not treat unit tests or static markup as evidence of browser acceptance.",
+      "kind": "recommendation",
+      "default": false,
+      "instructions": "Exercise the running application with real user workflows, API integration, both theme modes when supported, narrow layouts and keyboard navigation. Do not treat unit tests or static markup as evidence of browser acceptance.",
+      "commands": []
+    },
+    {
+      "id": "repository-check",
+      "name": "Repository check gate",
+      "category": "verification",
+      "description": "Require the project make check target after implementation. Enable only for projects with that executable target.",
+      "kind": "quality_gate",
+      "default": false,
+      "instructions": "Run the project make check target successfully. Preserve its actual behavioral, lint, type and build checks.",
+      "commands": [
+        {
+          "argv": [
+            "make",
+            "check"
+          ],
+          "timeout": 600,
+          "backends": [
+            "pyfly",
+            "larafly",
+            "java",
+            "rust",
+            "dotnet"
+          ]
+        }
+      ]
+    }
+  ]
+}
